@@ -9,6 +9,7 @@ export class RequestService {
   constructor(private http: HttpClient) {}
 
   saveForm(receta: any): Observable<any> {
-    return this.http.post('https://cheff-bot-backend.herokuapp.com/recetas', receta);
+    console.log(receta);
+    return this.http.post('http://localhost:3312/recetas', receta);
   }
 }

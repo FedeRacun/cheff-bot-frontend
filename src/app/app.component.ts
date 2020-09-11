@@ -72,6 +72,8 @@ export class AppComponent {
     this.requestService.saveForm(receta).subscribe(
       res => {
         this.botFrom.reset();
+        this.botFrom.get('glutenFree').setValue(false);
+        this.botFrom.get('steps').setValue('');
         this.arrayIngredients = [];
       },
       err => {
