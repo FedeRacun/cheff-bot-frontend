@@ -1,0 +1,17 @@
+.btn-outline-secondary:hover {
+  background-color: #68b5b0 !important;
+}
+
+.btn-primary {
+  background-color: #68b5b0;
+  border-color: #68b5b0;
+}
+
+.btn-primary:hover {
+  background-color: #67dab8;
+}
+
+.form-check-input:checked {
+  background-color: #68b5b0 !important;
+  border-color: #68b5b0 !important;
+}

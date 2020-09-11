@@ -7,7 +7,20 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "heroku-postbuild": "ng build --prod",
+    "check-code": "pretty-quick --check",
+    "format-code": "pretty-quick --staged",
+    "precommit": "npm run check-code",
+    "prepush": "npm run lint && npm run angular-build",
+    "format:check": "prettier --config ./.prettierrc --list-different \"src/{app,environments,assets}/**/*{.ts,.js,.json,.css,.scss}\"",
+    "format:write": "prettier --write ./.prettierrc --list-different \"src/{app,environments,assets}/**/*{.ts,.js,.json,.css,.scss}\""
+  },
+  "husky": {
+    "hooks": {
+      "precommit": "npm run precommit",
+      "prepush": "npm run prepush"
+    }
   },
   "private": true,
   "dependencies": {
@@ -19,8 +32,13 @@
     "@angular/platform-browser": "~10.0.9",
     "@angular/platform-browser-dynamic": "~10.0.9",
     "@angular/router": "~10.0.9",
+    "@ng-select/ng-select": "^5.0.1",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
+    "prettier": "^2.0.5",
+    "pretty-quick": "^2.0.1",
+    "express": "^4.17.1",
+    "path": "^0.12.7",
     "zone.js": "~0.10.3"
   },
   "devDependencies": {
