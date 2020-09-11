@@ -1,6 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {FormGroup, Validators, FormBuilder} from '@angular/forms';
 import {RequestService} from './request.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-root',
@@ -75,10 +76,31 @@ export class AppComponent {
         this.botFrom.get('glutenFree').setValue(false);
         this.botFrom.get('steps').setValue('');
         this.arrayIngredients = [];
+        this.showOk();
       },
       err => {
         console.error('Ocurrio un Error');
+        this.showFail();
       }
+    );
+  }
+
+  showOk(): void {
+    Swal.fire(
+      'Perfecto!',
+      `Tu receta fue enviada satifactoriamente.
+      Luego de revisarla, sera añadida junto con el resto.
+      Gracias por colaborar!`,
+      'success'
+    );
+  }
+
+  showFail(): void {
+    Swal.fire(
+      'Disculpanos!',
+      `Cometimos un error y no pudimos procesar tu receta,
+       te pedimos disculpas y te garantizamos que alguien será despedido por esto. Muchas gracias`,
+      'error'
     );
   }
 }

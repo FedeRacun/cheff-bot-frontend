@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -39,6 +39,7 @@
     "pretty-quick": "^2.0.1",
     "express": "^4.17.1",
     "path": "^0.12.7",
+    "sweetalert2": "^9.15.1",
     "zone.js": "~0.10.3"
   },
   "devDependencies": {
