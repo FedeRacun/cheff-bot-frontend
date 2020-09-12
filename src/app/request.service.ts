@@ -10,6 +10,6 @@ export class RequestService {
 
   saveForm(receta: any): Observable<any> {
     console.log(receta);
-    return this.http.post('http://localhost:3312/recetas', receta);
+    return this.http.post('http://localhost:3400/recetas', receta);
   }
 }
