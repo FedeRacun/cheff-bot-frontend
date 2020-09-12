@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormGroup, Validators, FormBuilder} from '@angular/forms';
 import {RequestService} from './request.service';
 import Swal from 'sweetalert2';
@@ -8,8 +8,10 @@ import Swal from 'sweetalert2';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   @ViewChild('inputIngredient') inputIngredients;
+
+  loading: boolean;
 
   types: any[] = [
     {id: 'ALL', name: 'Cualquiera'},
@@ -43,6 +45,10 @@ export class AppComponent {
 
   constructor(private formBuilder: FormBuilder, private requestService: RequestService) {}
 
+  ngOnInit(): void {
+    this.loading = false;
+  }
+
   addIngredient(): void {
     const value = this.inputIngredients.nativeElement.value;
     if (value) {
@@ -69,7 +75,7 @@ export class AppComponent {
     if (!receta.type.includes('ALL')) {
       receta.type.push('ALL');
     }
-
+    this.loading = true;
     this.requestService.saveForm(receta).subscribe(
       res => {
         this.botFrom.reset();
@@ -78,10 +84,12 @@ export class AppComponent {
         this.botFrom.get('userName').setValue('');
         this.arrayIngredients = [];
         this.showOk();
+        this.loading = false;
       },
       err => {
         console.error('Ocurrio un Error');
         this.showFail();
+        this.loading = false;
       }
     );
   }

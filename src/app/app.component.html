@@ -120,7 +120,7 @@
 
           <!-- Button submit -->
           <div class="col-md-6">
-            <button class="btn btn-primary float-right" (click)="sendForm()" [disabled]="botFrom.invalid">
+            <button class="btn btn-primary float-right" (click)="sendForm()" [disabled]="botFrom.invalid && (!loading)">
               Cargar
             </button>
           </div>
