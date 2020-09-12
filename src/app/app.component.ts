@@ -17,9 +17,9 @@ export class AppComponent {
     {id: 'VEGETARIAN', name: 'Vegetariano'}
   ];
   difficulty: any[] = [
-    {id: 1, name: 'Facil'},
-    {id: 2, name: 'Medio'},
-    {id: 3, name: 'Dificil'}
+    {id: '1', name: 'Facil'},
+    {id: '2', name: 'Medio'},
+    {id: '3', name: 'Dificil'}
   ];
 
   arrayIngredients: any[] = [];
