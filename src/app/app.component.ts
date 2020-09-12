@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   @ViewChild('inputIngredient') inputIngredients;
 
   loading: boolean;
@@ -74,7 +74,7 @@ export class AppComponent implements OnInit{
   sendForm(): void {
     const receta = this.botFrom.value;
 
-    if (!receta.type.includes('ALL') && !receta.type.inludes('DESSERT')) {
+    if (!receta.type.includes('ALL') && !receta.type.includes('DESSERT')) {
       receta.type.push('ALL');
     }
     receta.name = receta.name.trim();
@@ -116,7 +116,7 @@ export class AppComponent implements OnInit{
     );
   }
 
-  checkName(): any{
+  checkName(): any {
     let value = this.botFrom.get('name').value;
     value = value.trim();
     if (!value.length) {
