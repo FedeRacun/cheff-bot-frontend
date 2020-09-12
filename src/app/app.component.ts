@@ -74,7 +74,7 @@ export class AppComponent implements OnInit{
   sendForm(): void {
     const receta = this.botFrom.value;
 
-    if (!receta.type.includes('ALL')) {
+    if (!receta.type.includes('ALL') && !receta.type.inludes('DESSERT')) {
       receta.type.push('ALL');
     }
     receta.name = receta.name.trim();
