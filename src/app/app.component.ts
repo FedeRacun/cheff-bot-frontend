@@ -75,6 +75,7 @@ export class AppComponent {
         this.botFrom.reset();
         this.botFrom.get('glutenFree').setValue(false);
         this.botFrom.get('steps').setValue('');
+        this.botFrom.get('userName').setValue('');
         this.arrayIngredients = [];
         this.showOk();
       },
