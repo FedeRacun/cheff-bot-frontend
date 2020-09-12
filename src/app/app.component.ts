@@ -16,7 +16,8 @@ export class AppComponent implements OnInit{
   types: any[] = [
     {id: 'ALL', name: 'Cualquiera'},
     {id: 'VEGAN', name: 'Vegano'},
-    {id: 'VEGETARIAN', name: 'Vegetariano'}
+    {id: 'VEGETARIAN', name: 'Vegetariano'},
+    {id: 'DESSERT', name: 'Postre'}
   ];
   difficulty: any[] = [
     {id: '1', name: 'Facil'},
@@ -73,7 +74,7 @@ export class AppComponent implements OnInit{
   sendForm(): void {
     const receta = this.botFrom.value;
 
-    if (!receta.type.includes('ALL')) {
+    if (!receta.type.includes('ALL') && !receta.type.inludes('DESSERT')) {
       receta.type.push('ALL');
     }
     receta.name = receta.name.trim();
