@@ -30,7 +30,7 @@ export class AppComponent implements OnInit{
   public botFrom: FormGroup = this.formBuilder.group(
     {
       type: ['', Validators.required],
-      name: ['', Validators.required],
+      name: ['', [Validators.required, Validators.minLength(2)]],
       difficulty: ['', Validators.required],
       time: [null, Validators.required],
       glutenFree: [false],
@@ -50,8 +50,9 @@ export class AppComponent implements OnInit{
   }
 
   addIngredient(): void {
-    const value = this.inputIngredients.nativeElement.value;
-    if (value) {
+    let value = this.inputIngredients.nativeElement.value;
+    value = value.trim();
+    if (!!value) {
       this.arrayIngredients.unshift(value);
       this.botFrom.get('ingredients').setValue(this.arrayIngredients);
     }
@@ -75,6 +76,7 @@ export class AppComponent implements OnInit{
     if (!receta.type.includes('ALL')) {
       receta.type.push('ALL');
     }
+    receta.name = receta.name.trim();
     this.loading = true;
     this.requestService.saveForm(receta).subscribe(
       res => {
@@ -111,5 +113,13 @@ export class AppComponent implements OnInit{
        te pedimos disculpas y te garantizamos que alguien será despedido por esto. Muchas gracias`,
       'error'
     );
+  }
+
+  checkName(): any{
+    let value = this.botFrom.get('name').value;
+    value = value.trim();
+    if (!value.length) {
+      return this.botFrom.get('name').setValue('');
+    }
   }
 }
